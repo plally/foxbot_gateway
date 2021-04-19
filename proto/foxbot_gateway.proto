@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option go_package = "github.com/plally/foxbot_gateway/proto";
+import "google/protobuf/timestamp.proto";
+
+message PersistRoleData {
+  string role_id = 1;
+  string user_id = 2;
+  string guild_id = 3;
+  google.protobuf.Timestamp expiration = 4;
+}
+
+message UnpersistRoleData {
+  string role_id = 1;
+  string user_id = 2;
+  string guild_id = 3;
+  bool remove_role = 4;
+}
+
+message empty {}
+
+service FoxbotGateway {
+  rpc PersistRole(PersistRoleData) returns (empty);
+  rpc UnpersistRole(UnpersistRoleData) returns (empty);
+}

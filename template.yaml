@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+  MemberInfoDatabase:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: foxbot_member_database
+      AttributeDefinitions:
+        - AttributeName: InfoIndex # member#guildid#userid
+          AttributeType: S
+        - AttributeName: InfoType
+          AttributeType: S
+      KeySchema:
+        - AttributeName: InfoIndex
+          KeyType: HASH
+        - AttributeName: InfoType
+          KeyType: RANGE
+      BillingMode: PAY_PER_REQUEST
+
