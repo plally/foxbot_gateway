@@ -14,7 +14,6 @@ func main() {
 	}
 
 	session.Identify.Intents = discordgo.IntentsGuildMembers
-
 	session.AddHandler(onMemberAdd)
 
 	err = session.Open()
