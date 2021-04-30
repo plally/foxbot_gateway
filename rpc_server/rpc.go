@@ -53,7 +53,7 @@ func (rpc *GatewayRPC) PersistRole(ctx context.Context, data *proto.PersistRoleD
 		return &proto.Empty{}, status.Error(codes.Unknown, err.Error())
 	}
 
-	err = role_persister.CreateRolePersist(data.GuildId, data.RoleId, data.UserId, data.Expiration.AsTime())
+	err = role_persister.CreateRolePersist(data.GuildId, data.UserId, data.RoleId, data.Expiration.AsTime())
 	if err != nil {
 		return &proto.Empty{}, status.Error(codes.Unknown, err.Error())
 	}

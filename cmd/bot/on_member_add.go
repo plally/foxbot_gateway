@@ -15,7 +15,7 @@ func onMemberAdd(session *discordgo.Session, newMemberEvent *discordgo.GuildMemb
 		log.Println("error getting persisted roles", err)
 	}
 
-	log.Println("member joined had %v persisted roles", len(persistedRoles))
+	log.Printf("member joined had %v persisted roles", len(persistedRoles))
 	for _, role := range persistedRoles {
 		err = session.GuildMemberRoleAdd(role.GuildID, role.UserID, role.RoleID)
 
