@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
+	log.Println("starting bot")
 	session, err := discordgo.New("Bot "+os.Getenv("BOT_TOKEN"))
 	if err != nil {
 		log.Fatal("error creating session", err)
