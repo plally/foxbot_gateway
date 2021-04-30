@@ -37,7 +37,7 @@ func (rpc *GatewayRPC) UnpersistRole(ctx context.Context, data *proto.UnpersistR
 
 func (rpc *GatewayRPC) PersistRole(ctx context.Context, data *proto.PersistRoleData) (*proto.Empty, error){
 	if time.Now().After(data.Expiration.AsTime())  {
-		return &proto.Empty{}, status.Error(codes.InvalidArgument, "expiration after current time")
+		return &proto.Empty{}, status.Error(codes.InvalidArgument, "expiration before current time")
 	}
 
 	err := rpc.discordSession.GuildMemberRoleAdd(data.GuildId, data.UserId, data.RoleId)

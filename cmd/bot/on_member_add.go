@@ -11,6 +11,7 @@ import (
 
 func onMemberAdd(session *discordgo.Session, newMemberEvent *discordgo.GuildMemberAdd) {
 	persistedRoles, err := role_persister.GetPersistedRoles(newMemberEvent.GuildID, newMemberEvent.User.ID)
+	log.Println("member joined")
 	if err != nil {
 		log.Println("error getting persisted roles", err)
 	}
